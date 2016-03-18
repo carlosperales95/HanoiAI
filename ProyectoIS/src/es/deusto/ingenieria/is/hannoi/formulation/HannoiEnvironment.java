@@ -61,14 +61,11 @@ public class HannoiEnvironment extends State {
 		public String toString() {
 			String result = "";
 			for (Peg peg : pegs) {
-				result += "|\n";
 				result += "|-";
 					for (Disk Disk : peg.getDisks()) {
 						result += Disk.getSize(); 	
 					}
-				result += "\n";
-				result += "|\n";
-				result += "\n";
+				result += "\n\n";
 			}
 			return result;
 		}

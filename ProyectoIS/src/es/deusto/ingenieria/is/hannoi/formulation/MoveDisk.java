@@ -27,11 +27,11 @@ public class MoveDisk extends Operator{
 		if(peg1.getDisks().size()!= 0 && peg2.getDisks().size()!=0){
 			return !(peg1.getFirstDisk().isBigger(peg2.getFirstDisk()));
 		}
-		if(peg2.getDisks().size() == 0){
-			return true;
-		}
-		if(peg1.getDisks().size() == 0) {
+		if(peg1.getDisks().size() == 0){
 			return false;
+		}
+		if(peg2.getDisks().size() == 0) {
+			return true;
 		}
 		else{
 			return false;
