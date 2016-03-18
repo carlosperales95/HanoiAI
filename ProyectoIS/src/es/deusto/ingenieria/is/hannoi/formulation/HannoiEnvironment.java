@@ -59,7 +59,7 @@ public class HannoiEnvironment extends State {
 
 		@Override
 		public String toString() {
-			String result = "Hannoi problem\n";
+			String result = "";
 			for (Peg peg : pegs) {
 				result += "|\n";
 				result += "|-";

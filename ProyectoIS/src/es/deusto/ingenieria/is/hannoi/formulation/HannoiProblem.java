@@ -30,7 +30,6 @@ public class HannoiProblem extends Problem{
 	public boolean isFinalState(State state){
 		if(state != null && state instanceof HannoiEnvironment){
 			HannoiEnvironment hannoiEnv = (HannoiEnvironment)state;
-			System.out.println("HannoiProblem: " + hannoiEnv.getTargetsNumbDisks());
 			if(hannoiEnv.getTargetsNumbDisks()==  numDisks) return true;	
 			else return false;
 		}
