@@ -1,4 +1,4 @@
-package es.deusto.ingenieria.is.hannoi.formulation;
+package es.deusto.ingenieria.is.hanoi.formulation;
 
 import es.deusto.ingenieria.is.search.formulation.Operator;
 import es.deusto.ingenieria.is.search.formulation.State;
@@ -16,7 +16,7 @@ public class MoveDisk extends Operator{
 	
 	@Override
 	public State effect(State state) {
-		HannoiEnvironment newEnv = (HannoiEnvironment) ((HannoiEnvironment)state).clone();
+		HanoiEnvironment newEnv = (HanoiEnvironment) ((HanoiEnvironment)state).clone();
 		newEnv.moveDisk(peg1, peg2);
 		return newEnv;
 	}

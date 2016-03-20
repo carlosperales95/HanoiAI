@@ -1,20 +1,23 @@
-package es.deusto.ingenieria.is.hannoi.formulation;
+package es.deusto.ingenieria.is.hanoi.formulation;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import es.deusto.ingenieria.is.search.formulation.State;
 
-public class HannoiEnvironment extends State {
+public class HanoiEnvironment extends State {
 
 		private List<Peg> pegs;
 		private Peg target;
 		static int targetPeg;
 		
-		public HannoiEnvironment(int numPegs, int target) {
+		public HanoiEnvironment(int numPegs, int target) {
 			this.pegs = new ArrayList<>();
 			for (int i = 0; i < numPegs; i++) {
 				pegs.add(new Peg(i));
+			}
+			for (int i = 3; i > 0 ; i--) {
+				pegs.get(0).addDisk(new Disk(i));
 			}
 			targetPeg = target;
 			this.target = getPegs().get(target);
@@ -46,8 +49,8 @@ public class HannoiEnvironment extends State {
 
 		@Override
 		public boolean equals(Object obj) {
-			if (obj != null && obj instanceof HannoiEnvironment) {
-				List<Peg> auxHannoi = ((HannoiEnvironment) obj).getPegs();
+			if (obj != null && obj instanceof HanoiEnvironment) {
+				List<Peg> auxHannoi = ((HanoiEnvironment) obj).getPegs();
 				for (Peg peg : auxHannoi)
 					for (Peg peg2 : pegs)
 						if (!peg2.equals(peg))
@@ -72,8 +75,8 @@ public class HannoiEnvironment extends State {
 		
 		
 		@Override
-		public HannoiEnvironment clone() {
-			HannoiEnvironment newEnv = new HannoiEnvironment(this.pegs.size(), targetPeg);
+		public HanoiEnvironment clone() {
+			HanoiEnvironment newEnv = new HanoiEnvironment(this.pegs.size(), targetPeg);
 			for (int i = 0; i < this.pegs.size(); i++) {
 				newEnv.pegs.get(i).setDisks(this.pegs.get(i).getDisks());
 			}

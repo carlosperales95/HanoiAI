@@ -1,4 +1,4 @@
-package es.deusto.ingenieria.is.hannoi.formulation;
+package es.deusto.ingenieria.is.hanoi.formulation;
 import java.util.ArrayList;
 import java.util.List;
 

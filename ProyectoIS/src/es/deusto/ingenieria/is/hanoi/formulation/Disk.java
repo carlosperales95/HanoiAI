@@ -1,4 +1,4 @@
-package es.deusto.ingenieria.is.hannoi.formulation;
+package es.deusto.ingenieria.is.hanoi.formulation;
 
 public class Disk {
 
