@@ -46,14 +46,16 @@ public class HanoiProblem extends Problem{
 	 
 	@Override
 	public State gatherInitialPercepts() {
-		return new HanoiEnvironment(numPegs, targetPeg);
+		return new HanoiEnvironment(numPegs, targetPeg, numDisks);
 	}
 	
 	public void solve(SearchMethod searchMethod) {		
 		SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss.S");
 		Date beginDate = GregorianCalendar.getInstance().getTime();
 		System.out.println("\n* Start '" + searchMethod.getClass().getSimpleName() + "' (" + formatter.format(beginDate) + ")");				
+		
 		Node finalNode = searchMethod.search(this, this.getInitialStates().get(0));
+		
 		Date endDate = GregorianCalendar.getInstance().getTime();		
 		System.out.println("* End   '" + searchMethod.getClass().getSimpleName() + "' (" + formatter.format(endDate) + ")");
 		

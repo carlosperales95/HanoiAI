@@ -10,14 +10,14 @@ import es.deusto.ingenieria.is.search.algorithms.blind.BreadthFS;
 public class MainProblem {
 
 	static private final int NUMBER_PEGS = 3;
-	static private final int NUMBER_DISKS = 3;
+	static private final int NUMBER_DISKS = 4;
 	static private final int TARGET_PEG = NUMBER_PEGS -1; //The default target is the one on the far right
 
 	public static void main(String[] args) {
 		
 		//Creating the problem with the specified values
 		HanoiProblem problem = new HanoiProblem(NUMBER_PEGS, NUMBER_DISKS, TARGET_PEG);
-//		HannoiEnvironment environment = (HannoiEnvironment) problem.gatherInitialPercepts();
+		HanoiEnvironment environment = (HanoiEnvironment) problem.gatherInitialPercepts();
 
 		//Adding 3 disks to the left peg
 //		environment.getPegs().get(0).addDisk(new Disk(3));
@@ -26,8 +26,9 @@ public class MainProblem {
 
 		problem.addInitialState(problem.gatherInitialPercepts());
 		System.out.println(problem.gatherInitialPercepts());
+		HanoiEnvironment copiedEnvironment = environment.clone();
+		System.out.println("Copied Environment \n" + copiedEnvironment);
 		
-
 //		MoveDisk movement1 = new MoveDisk(environment.getPegs().get(1), environment.getPegs().get(2));
 //		System.out.println(movement1);
 //		if (movement1.isApplicable(environment)) {

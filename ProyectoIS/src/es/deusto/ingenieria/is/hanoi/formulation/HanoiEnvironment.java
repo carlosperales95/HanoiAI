@@ -9,17 +9,19 @@ public class HanoiEnvironment extends State {
 
 		private List<Peg> pegs;
 		private Peg target;
+		private int numberDisks;
 		static int targetPeg;
 		
-		public HanoiEnvironment(int numPegs, int target) {
+		public HanoiEnvironment(int numPegs, int target, int numberDisks) {
 			this.pegs = new ArrayList<>();
 			for (int i = 0; i < numPegs; i++) {
 				pegs.add(new Peg(i));
 			}
-			for (int i = 3; i > 0 ; i--) {
+			for (int i = numberDisks; i > 0 ; i--) {
 				pegs.get(0).addDisk(new Disk(i));
 			}
 			targetPeg = target;
+			numberDisks = numberDisks;
 			this.target = getPegs().get(target);
 		}
 
@@ -76,7 +78,7 @@ public class HanoiEnvironment extends State {
 		
 		@Override
 		public HanoiEnvironment clone() {
-			HanoiEnvironment newEnv = new HanoiEnvironment(this.pegs.size(), targetPeg);
+			HanoiEnvironment newEnv = new HanoiEnvironment(this.pegs.size(), targetPeg, numberDisks);
 			for (int i = 0; i < this.pegs.size(); i++) {
 				newEnv.pegs.get(i).setDisks(this.pegs.get(i).getDisks());
 			}
