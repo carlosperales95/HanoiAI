@@ -77,4 +77,15 @@ public class Peg {
 		}
 		return false;
 	}
+	
+	
+	@Override
+	public Peg clone() {
+		Peg newPeg = new Peg(this.position);
+		for (Disk disk : disks) {
+			newPeg.addDisk(disk.clone());;
+		}
+		
+		return newPeg;
+	}
 }

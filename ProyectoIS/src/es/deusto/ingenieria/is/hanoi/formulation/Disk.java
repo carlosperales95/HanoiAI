@@ -35,4 +35,11 @@ public class Disk {
 		return false;
 	}
 	
+	
+	
+	@Override
+	public Disk clone() {
+		return new Disk(this.size);
+	}
+	
 }
