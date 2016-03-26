@@ -48,7 +48,7 @@ public class HanoiEnvironment extends State implements Cloneable {
 		
 		
 		public int getTargetsNumbDisks(){
-			return pegs.get(pegs.size() - 1).getNumberOfDisks();
+			return pegs.get(target.getPosition()).getNumberOfDisks();
 		}
 
 		public void moveDisk(int peg,int peg2){

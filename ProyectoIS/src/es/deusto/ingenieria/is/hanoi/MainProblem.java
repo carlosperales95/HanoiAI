@@ -7,24 +7,20 @@ import es.deusto.ingenieria.is.hanoi.formulation.MoveDisk;
 import es.deusto.ingenieria.is.search.algorithms.Node;
 import es.deusto.ingenieria.is.search.algorithms.blind.BreadthFS;
 import es.deusto.ingenieria.is.search.algorithms.blind.BreadthFSwithLog;
+import es.deusto.ingenieria.is.search.algorithms.blind.DepthFS;
 
 public class MainProblem {
 
-	static private final int NUMBER_PEGS = 4;
+	static private final int NUMBER_PEGS = 3;
 	static private final int NUMBER_DISKS = 6;
-	static private final int TARGET_PEG = NUMBER_PEGS -1; //The default target is the one on the far right
+	static private final int TARGET_PEG = NUMBER_PEGS -2; //The default target is the one on the far right
 
 	public static void main(String[] args) {
 
 		//Creating the problem with the specified values
 		HanoiProblem problem = new HanoiProblem(NUMBER_PEGS, NUMBER_DISKS, TARGET_PEG);
 		HanoiEnvironment environment = (HanoiEnvironment) problem.gatherInitialPercepts();
-		HanoiEnvironment newEnv = (HanoiEnvironment) problem.gatherInitialPercepts();
-		newEnv.moveDisk(0, 2);
-		System.out.println(newEnv.toString());
-		System.out.println(environment.toString());
-		
-		System.out.println(environment.equals(newEnv));
+
 		//Adding 3 disks to the left peg
 		//		environment.getPegs().get(0).addDisk(new Disk(3));
 		//		environment.getPegs().get(0).addDisk(new Disk(2));
@@ -173,6 +169,7 @@ public class MainProblem {
 		// This code is for the 3rd derivable
 
 				problem.solve(BreadthFS.getInstance());
+				problem.solve(DepthFS.getInstance());
 		//
 
 

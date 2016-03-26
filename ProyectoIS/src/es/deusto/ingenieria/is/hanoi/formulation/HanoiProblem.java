@@ -80,7 +80,7 @@ public class HanoiProblem extends Problem{
 			List<String> operators = new ArrayList<String>();
 			searchMethod.solutionPath(finalNode, operators);
 			searchMethod.createSolutionLog(operators);			
-			System.out.println("- Final state:" + finalNode.getState());
+			System.out.println("- Final state:\n" + finalNode.getState());
 		} else {
 			System.out.println("\n- Unable to find the solution!     :(");
 		}
