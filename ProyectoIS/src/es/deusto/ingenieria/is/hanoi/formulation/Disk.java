@@ -20,17 +20,19 @@ public class Disk {
 	}
 
 	public String toString(){
-		return "Disk size is: "+size;
+		return "Disk size is: " + size;
 	}
 
 	
 	public boolean equals(Object obj){
 		if(obj != null && obj instanceof Disk){
-			Disk ringAux = (Disk) obj;
-			if(this.size == ringAux.size){
+			Disk diskAux = (Disk) obj;
+			if(this.size == diskAux.size){
 				return true;
 			}
-			return false;				
+			else{
+				return false;				
+			}
 		}
 		return false;
 	}

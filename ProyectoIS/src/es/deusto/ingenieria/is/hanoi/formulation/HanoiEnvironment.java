@@ -5,7 +5,7 @@ import java.util.List;
 
 import es.deusto.ingenieria.is.search.formulation.State;
 
-public class HanoiEnvironment extends State {
+public class HanoiEnvironment extends State implements Cloneable {
 
 		private List<Peg> pegs;
 		private Peg target;
@@ -21,7 +21,7 @@ public class HanoiEnvironment extends State {
 				pegs.get(0).addDisk(new Disk(i));
 			}
 			targetPeg = target;
-			numberDisks = numberDisks;
+			this.numberDisks = numberDisks;
 			this.target = getPegs().get(target);
 		}
 
@@ -48,25 +48,30 @@ public class HanoiEnvironment extends State {
 		
 		
 		public int getTargetsNumbDisks(){
-			return target.getNumberOfDisks();
+			return pegs.get(pegs.size() - 1).getNumberOfDisks();
 		}
 
-		public void moveDisk(Peg peg, Peg peg2){
-			peg2.addDisk(peg.getFirstDisk());
-			peg.removeFirstDisk();
+		public void moveDisk(int peg,int peg2){
+			pegs.get(peg2).addDisk(pegs.get(peg).getFirstDisk());
+			pegs.get(peg).removeFirstDisk();
+		}
+		
+		public int getDisks(){
+			return numberDisks;
 		}
 
 		@Override
 		public boolean equals(Object obj) {
+			boolean bool = true;
 			if (obj != null && obj instanceof HanoiEnvironment) {
-				List<Peg> auxHannoi = ((HanoiEnvironment) obj).getPegs();
-				for (Peg peg : auxHannoi)
-					for (Peg peg2 : pegs)
-						if (!peg2.equals(peg))
-							return false;
-				return true;
-			} else
-				return false;
+				List<Peg> auxHanoi = ((HanoiEnvironment) obj).getPegs();
+				for (int i = 0; i < this.pegs.size(); i++) {
+					if(!(auxHanoi.get(i).getDisks().equals(this.getPegs().get(i).getDisks()))){
+						bool = false;
+					}
+				}
+			}
+			return bool;
 		}
 
 		@Override
@@ -89,7 +94,6 @@ public class HanoiEnvironment extends State {
 			for (Peg peg : pegs) {
 				newEnvironment.getPegs().add(peg.clone());
 			}
-			
 			newEnvironment.target = this.target;
 			return newEnvironment;
 		

@@ -70,10 +70,12 @@ public class Peg {
 	public boolean equals(Object obj){
 		if(obj != null && obj instanceof Peg){
 			Peg pegAux = (Peg) obj;
-			if(this.position == pegAux.position){
-				return true;
+			if(this.position == pegAux.position || pegAux.getDisks().equals(this.getDisks())){
+					return true;
+				}
+			else{
+				return false;
 			}
-			return false;				
 		}
 		return false;
 	}

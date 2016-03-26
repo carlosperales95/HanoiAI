@@ -28,7 +28,7 @@ public class HanoiProblem extends Problem{
 		for (int i = 0; i < this.numPegs; i++) {
 			for (int j = 0; j < this.numPegs; j++) {
 				if(i!=j){
-					this.addOperator(new MoveDisk(new Peg(i), new Peg(j)));
+					this.addOperator(new MoveDisk(i, j));
 				}
 			}
 		}
@@ -38,7 +38,7 @@ public class HanoiProblem extends Problem{
 	public boolean isFinalState(State state){
 		if(state != null && state instanceof HanoiEnvironment){
 			HanoiEnvironment hannoiEnv = (HanoiEnvironment)state;
-			if(hannoiEnv.getTargetsNumbDisks()==  numDisks) return true;	
+			if(hannoiEnv.getTargetsNumbDisks() ==  numDisks) return true;	
 			else return false;
 		}
 		return false;
@@ -54,7 +54,7 @@ public class HanoiProblem extends Problem{
 		Date beginDate = GregorianCalendar.getInstance().getTime();
 		System.out.println("\n* Start '" + searchMethod.getClass().getSimpleName() + "' (" + formatter.format(beginDate) + ")");				
 		
-		Node finalNode = searchMethod.search(this, this.getInitialStates().get(0));
+		Node finalNode = searchMethod.search(this, this.gatherInitialPercepts());
 		
 		Date endDate = GregorianCalendar.getInstance().getTime();		
 		System.out.println("* End   '" + searchMethod.getClass().getSimpleName() + "' (" + formatter.format(endDate) + ")");
