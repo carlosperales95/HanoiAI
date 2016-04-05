@@ -49,13 +49,13 @@ public class HanoiProblem extends Problem{
 		return new HanoiEnvironment(numPegs, targetPeg, numDisks);
 	}
 	
-	public void solve(SearchMethod searchMethod) {		
+	public List<Node> solve(SearchMethod searchMethod) {		
 		SimpleDateFormat formatter = new SimpleDateFormat("HH:mm:ss.S");
 		Date beginDate = GregorianCalendar.getInstance().getTime();
 		System.out.println("\n* Start '" + searchMethod.getClass().getSimpleName() + "' (" + formatter.format(beginDate) + ")");				
-		
+		Node parent = null;
 		Node finalNode = searchMethod.search(this, this.gatherInitialPercepts());
-		
+		List<Node> listaOperators = new ArrayList<>();
 		Date endDate = GregorianCalendar.getInstance().getTime();		
 		System.out.println("* End   '" + searchMethod.getClass().getSimpleName() + "' (" + formatter.format(endDate) + ")");
 		
@@ -67,23 +67,34 @@ public class HanoiProblem extends Problem{
 		long hours = minutes / 60;
 		minutes %= 60;
 		
-		String time = "* Serach lasts: ";
+		String time = "* Search lasts: ";
 		time += (hours > 0) ? hours + " h " : " ";
 		time += (minutes > 0) ? minutes + " m " : " ";
 		time += (seconds > 0) ? seconds + "s " : " ";
 		time += (miliseconds > 0) ? miliseconds + "ms " : " ";
 		
-		System.out.println(time);
+		System.out.println("* Search lasts: " + time);
 		
 		if (finalNode != null) {
 			System.out.println("\n- Solution found!     :)");
 			List<String> operators = new ArrayList<String>();
 			searchMethod.solutionPath(finalNode, operators);
+			listaOperators.add(finalNode);
+			parent = finalNode;
+			while(parent != null) {
+				if(parent !=null){
+					listaOperators.add(parent.getParent());
+					parent = parent.getParent();
+				}
+			}
+			
 			searchMethod.createSolutionLog(operators);			
 			System.out.println("- Final state:\n" + finalNode.getState());
 		} else {
 			System.out.println("\n- Unable to find the solution!     :(");
 		}
+		
+		return listaOperators;
 	}
 	
 }

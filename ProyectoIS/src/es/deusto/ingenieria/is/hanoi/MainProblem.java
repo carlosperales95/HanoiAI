@@ -1,5 +1,7 @@
 package es.deusto.ingenieria.is.hanoi;
 
+import java.util.List;
+
 import es.deusto.ingenieria.is.hanoi.formulation.Disk;
 import es.deusto.ingenieria.is.hanoi.formulation.HanoiEnvironment;
 import es.deusto.ingenieria.is.hanoi.formulation.HanoiProblem;
@@ -11,9 +13,9 @@ import es.deusto.ingenieria.is.search.algorithms.blind.DepthFS;
 
 public class MainProblem {
 
-	static private final int NUMBER_PEGS = 3;
+	static private final int NUMBER_PEGS = 4;
 	static private final int NUMBER_DISKS = 6;
-	static private final int TARGET_PEG = NUMBER_PEGS -2; //The default target is the one on the far right
+	static private final int TARGET_PEG = NUMBER_PEGS -1; // The peg at the right is the default target
 
 	public static void main(String[] args) {
 
@@ -33,7 +35,7 @@ public class MainProblem {
 //		
 //		HanoiEnvironment copiedEnvironment = (HanoiEnvironment) movementTry.effect(environment);
 //		
-//		System.out.println("Original environment : \n"+ environment);
+//		System.out.println("Original environment : \n"+ environment);                                                                            
 //		
 //		System.out.println("Copied Environment \n" + copiedEnvironment);
 //
@@ -168,8 +170,12 @@ public class MainProblem {
 
 		// This code is for the 3rd derivable
 
-				problem.solve(BreadthFS.getInstance());
-				problem.solve(DepthFS.getInstance());
+		List<Node> lista = problem.solve(BreadthFS.getInstance());
+		problem.solve(DepthFS.getInstance());
+			lista.remove(lista.size()-1);
+		for (Node node : lista) {
+			System.out.println(node.toString());
+		}
 		//
 
 
