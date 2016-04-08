@@ -82,24 +82,7 @@ public class Basic_MainWindow extends JFrame{
 		panel.setBounds(0, 0, lblPeg1.getWidth(), lblPeg1.getHeight()-10);
 		panel.setAlignmentY(300);
 		panel.add(lblNewLabel );
-		panel.add(lblNewLabel );
-
-		panel.add(lblNewLabel );
-
-		panel.add(lblNewLabel );
-
-		panel.add(lblNewLabel );
-
-		panel.add(lblNewLabel );
-
-		panel.add(lblNewLabel );
-
-		panel.add(lblNewLabel );
-
-		panel.add(lblNewLabel );
-
-		
-		
+				
 		panelPeg1.add(panel);
 		panelPeg1.add(lblPeg1);
 		

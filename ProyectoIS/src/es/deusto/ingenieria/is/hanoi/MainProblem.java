@@ -5,16 +5,19 @@ import java.util.List;
 import es.deusto.ingenieria.is.hanoi.formulation.Disk;
 import es.deusto.ingenieria.is.hanoi.formulation.HanoiEnvironment;
 import es.deusto.ingenieria.is.hanoi.formulation.HanoiProblem;
+import es.deusto.ingenieria.is.hanoi.formulation.HillClimbingAlgorithm;
 import es.deusto.ingenieria.is.hanoi.formulation.MoveDisk;
+import es.deusto.ingenieria.is.hanoi.formulation.heuristics.HanoiEvaluationFunction;
 import es.deusto.ingenieria.is.search.algorithms.Node;
 import es.deusto.ingenieria.is.search.algorithms.blind.BreadthFS;
 import es.deusto.ingenieria.is.search.algorithms.blind.BreadthFSwithLog;
 import es.deusto.ingenieria.is.search.algorithms.blind.DepthFS;
+import es.deusto.ingenieria.is.search.algorithms.heuristic.BestFS;
 
 public class MainProblem {
 
-	static private final int NUMBER_PEGS = 4;
-	static private final int NUMBER_DISKS = 6;
+	static private final int NUMBER_PEGS = 3;
+	static private final int NUMBER_DISKS = 4;
 	static private final int TARGET_PEG = NUMBER_PEGS -1; // The peg at the right is the default target
 
 	public static void main(String[] args) {
@@ -170,12 +173,12 @@ public class MainProblem {
 
 		// This code is for the 3rd derivable
 
-		List<Node> lista = problem.solve(BreadthFS.getInstance());
-		problem.solve(DepthFS.getInstance());
-			lista.remove(lista.size()-1);
-		for (Node node : lista) {
-			System.out.println(node.toString());
-		}
+		problem.solve(new HillClimbingAlgorithm(new HanoiEvaluationFunction()));
+//		problem.solve(DepthFS.getInstance());
+//			lista.remove(lista.size()-1);
+//		for (Node node : lista) {
+//			System.out.println(node.toString());
+//		}
 		//
 
 
