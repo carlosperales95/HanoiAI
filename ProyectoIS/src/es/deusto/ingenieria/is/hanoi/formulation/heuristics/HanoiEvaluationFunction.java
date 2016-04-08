@@ -17,9 +17,9 @@ public class HanoiEvaluationFunction extends EvaluationFunction{
 		HanoiEnvironment environment = (HanoiEnvironment) node.getState();	
 		int numeroDiscosNoTarget = 0;
 		for (Peg peg : environment.getPegs()) {
-			if(!(peg == environment.getTarget()))
+//			if(!(peg == environment.getPegs().get(0)))
 			numeroDiscosNoTarget+= peg.getNumberOfDisks();
 		}
-		return (environment.getTargetsNumbDisks()) ;
+		return (numeroDiscosNoTarget - environment.getPegs().get(0).getNumberOfDisks()) ;
 	}
 }

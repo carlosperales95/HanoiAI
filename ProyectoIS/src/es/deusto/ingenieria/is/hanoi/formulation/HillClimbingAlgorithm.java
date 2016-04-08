@@ -59,6 +59,8 @@ public class HillClimbingAlgorithm extends HeuristicSearchMethod{
 					}
 				}
 			}
+			if(successorNodes.isEmpty())
+				break;
 		}
 		
 		// If the problem is solved
