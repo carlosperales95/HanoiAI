@@ -16,8 +16,9 @@ public class HanoiEvaluationFunction extends EvaluationFunction{
 
 	@Override
 	public double calculateH(Node node) {
-		HanoiProblemReduced problem = new HanoiProblemReduced(3, 3, 2);
 		HanoiEnvironment environment = (HanoiEnvironment) node.getState();	
+		HanoiProblemReduced problem = new HanoiProblemReduced(environment.getPegs().size(), environment.getDisks(),
+				environment.getTarget().getPosition());
 		problem.addInitialState(environment);
 		return problem.solve(BreadthFS.getInstance());
 	}

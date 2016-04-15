@@ -17,7 +17,7 @@ import es.deusto.ingenieria.is.search.algorithms.heuristic.BestFS;
 public class MainProblem {
 
 	static private final int NUMBER_PEGS = 3;
-	static private final int NUMBER_DISKS = 3;
+	static private final int NUMBER_DISKS = 9;
 	static private final int TARGET_PEG = NUMBER_PEGS -1; // The peg at the right is the default target
 
 	public static void main(String[] args) {
@@ -174,7 +174,7 @@ public class MainProblem {
 
 		// This code is for the 3rd derivable
 
-//		problem.solve(new BestFS(new HanoiEvaluationFunction()));
+		problem.solve(BreadthFS.getInstance());
 		problem.solve(new HillClimbingAlgorithm(new HanoiEvaluationFunction()));
 //		problem.solve(DepthFS.getInstance());
 //			lista.remove(lista.size()-1);
