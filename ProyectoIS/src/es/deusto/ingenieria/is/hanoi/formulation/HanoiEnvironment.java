@@ -76,7 +76,7 @@ public class HanoiEnvironment extends State implements Cloneable {
 
 		@Override
 		public String toString() {
-			String result = "";
+			String result = "\n";
 			for (Peg peg : pegs) {
 				result += "|-";
 					for (Disk Disk : peg.getDisks()) {

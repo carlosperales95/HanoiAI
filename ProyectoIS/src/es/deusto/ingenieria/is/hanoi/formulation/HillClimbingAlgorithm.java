@@ -53,9 +53,9 @@ public class HillClimbingAlgorithm extends HeuristicSearchMethod{
 				successorNodes = this.expand(bestSuccessor, problem, generatedStates, expandedStates);
 				//If new successor nodes resulted from the expansion
 				for (Node node : successorNodes) {
-					if (this.getEvaluationFunction().calculateH(bestSuccessor) <= this.getEvaluationFunction().calculateH(node)) {
+					if (this.getEvaluationFunction().calculateH(bestSuccessor) >= this.getEvaluationFunction().calculateH(node)) {
 						bestSuccessor = node;
-						System.out.println("BestSuccessor encontrado: \n"+bestSuccessor.toString());
+//						System.out.println("BestSuccessor encontrado: \n"+bestSuccessor.toString());
 					}
 				}
 			}

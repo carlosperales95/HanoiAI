@@ -17,7 +17,7 @@ import es.deusto.ingenieria.is.search.algorithms.heuristic.BestFS;
 public class MainProblem {
 
 	static private final int NUMBER_PEGS = 3;
-	static private final int NUMBER_DISKS = 4;
+	static private final int NUMBER_DISKS = 3;
 	static private final int TARGET_PEG = NUMBER_PEGS -1; // The peg at the right is the default target
 
 	public static void main(String[] args) {
@@ -25,12 +25,13 @@ public class MainProblem {
 		//Creating the problem with the specified values
 		HanoiProblem problem = new HanoiProblem(NUMBER_PEGS, NUMBER_DISKS, TARGET_PEG);
 		HanoiEnvironment environment = (HanoiEnvironment) problem.gatherInitialPercepts();
+		
 
 		//Adding 3 disks to the left peg
 		//		environment.getPegs().get(0).addDisk(new Disk(3));
 		//		environment.getPegs().get(0).addDisk(new Disk(2));
 		//		environment.getPegs().get(0).addDisk(new Disk(1));
-
+		System.out.println("Initial state: "+environment);
 		problem.addInitialState(environment);
 //		System.out.println("ANTES DEL MOVIMIENTO");
 //
@@ -173,6 +174,7 @@ public class MainProblem {
 
 		// This code is for the 3rd derivable
 
+//		problem.solve(new BestFS(new HanoiEvaluationFunction()));
 		problem.solve(new HillClimbingAlgorithm(new HanoiEvaluationFunction()));
 //		problem.solve(DepthFS.getInstance());
 //			lista.remove(lista.size()-1);
