@@ -7,6 +7,8 @@ import es.deusto.ingenieria.is.hanoi.formulation.HanoiEnvironment;
 import es.deusto.ingenieria.is.hanoi.formulation.HanoiProblem;
 import es.deusto.ingenieria.is.hanoi.formulation.HillClimbingAlgorithm;
 import es.deusto.ingenieria.is.hanoi.formulation.MoveDisk;
+import es.deusto.ingenieria.is.hanoi.formulation.heuristics.HanoiBE1;
+import es.deusto.ingenieria.is.hanoi.formulation.heuristics.HanoiBE2;
 import es.deusto.ingenieria.is.hanoi.formulation.heuristics.HanoiEvaluationFunction;
 import es.deusto.ingenieria.is.search.algorithms.Node;
 import es.deusto.ingenieria.is.search.algorithms.blind.BreadthFS;
@@ -176,11 +178,22 @@ public class MainProblem {
 
 		// This code is for the 3rd derivable
 
-		//problem.solve(BreadthFS.getInstance());
-		//problem.solve(BreadthFSwithLog.getInstance());
-		problem.solve(DepthFSwithLog.getInstance());
+
+
+		
+	//	problem.solve(new BestFS(new HanoiBE1()));
+	//	problem.solve(new BestFS(new HanoiBE2()));
+	//	problem.solve(new BestFS(new HanoiEvaluationFunction()));
+	
+	//	problem.solve(DepthFS.getInstance());
+	//	problem.solve(BreadthFS.getInstance());
+		
+		
 	//	problem.solve(new HillClimbingAlgorithm(new HanoiEvaluationFunction()));
-//		problem.solve(DepthFS.getInstance());
+	//	problem.solve(new HillClimbingAlgorithm(new HanoiBE1()));
+	//	problem.solve(new HillClimbingAlgorithm(new HanoiBE2()));
+		
+
 //			lista.remove(lista.size()-1);
 //		for (Node node : lista) {
 //			System.out.println(node.toString());
