@@ -12,6 +12,21 @@ public class HanoiEvaluationFunction extends EvaluationFunction{
 	@Override
 	public double calculateG(Node node) {
 		return 0;
+
+	}
+
+	public double calculateBH1(Node node) {
+		HanoiEnvironment environment = (HanoiEnvironment) node.getState();	
+		
+		return environment.getDisks(environment.getPegs().get(0)).size();
+	
+	}
+	
+	public double calculateBH2(Node node) {
+		HanoiEnvironment environment = (HanoiEnvironment) node.getState();	
+		
+		return (environment.getDisks(environment.getPegs().get(0)).size()+environment.getDisks(environment.getPegs().get(1)).size());
+	
 	}
 
 	@Override

@@ -12,12 +12,14 @@ import es.deusto.ingenieria.is.search.algorithms.Node;
 import es.deusto.ingenieria.is.search.algorithms.blind.BreadthFS;
 import es.deusto.ingenieria.is.search.algorithms.blind.BreadthFSwithLog;
 import es.deusto.ingenieria.is.search.algorithms.blind.DepthFS;
+import es.deusto.ingenieria.is.search.algorithms.blind.DepthFSwithLog;
 import es.deusto.ingenieria.is.search.algorithms.heuristic.BestFS;
+import es.deusto.ingenieria.is.search.algorithms.heuristic.BestFSwithLog;
 
 public class MainProblem {
 
 	static private final int NUMBER_PEGS = 3;
-	static private final int NUMBER_DISKS = 9;
+	static private final int NUMBER_DISKS = 6;
 	static private final int TARGET_PEG = NUMBER_PEGS -1; // The peg at the right is the default target
 
 	public static void main(String[] args) {
@@ -174,8 +176,10 @@ public class MainProblem {
 
 		// This code is for the 3rd derivable
 
-		problem.solve(BreadthFS.getInstance());
-		problem.solve(new HillClimbingAlgorithm(new HanoiEvaluationFunction()));
+		//problem.solve(BreadthFS.getInstance());
+		//problem.solve(BreadthFSwithLog.getInstance());
+		problem.solve(DepthFSwithLog.getInstance());
+	//	problem.solve(new HillClimbingAlgorithm(new HanoiEvaluationFunction()));
 //		problem.solve(DepthFS.getInstance());
 //			lista.remove(lista.size()-1);
 //		for (Node node : lista) {
